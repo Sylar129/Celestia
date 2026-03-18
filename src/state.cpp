@@ -33,6 +33,10 @@ bool State::RunScript(const std::string &script) {
   return true;
 }
 
+void State::RegisterFunction(const std::string& name, lua_CFunction func) {
+  lua_register(L, name.c_str(), func);
+}
+
 template <> double State::GetLastValue<double>() const {
   if (!lua_isnumber(L, -1)) {
     throw std::runtime_error("Expected number at given index");

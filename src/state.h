@@ -48,6 +48,8 @@ public:
   template <>
   double GetLastValue<double>() const;
 
+  void RegisterFunction(const std::string& name, lua_CFunction func);
+
   [[nodiscard]] std::string GetErrorMessage() const { return error_message_; }
 
  private:
